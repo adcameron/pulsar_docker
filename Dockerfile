@@ -8,7 +8,8 @@
 # as you do not remove the above attribution and reasonably
 # inform receipients that you have modified the original work.
 
-FROM ubuntu:focal
+FROM ubuntu:bionic
+# FROM ubuntu:focal
 
 MAINTAINER Andrew Cameron "andrewcameorn@swin.edu.au"
 
@@ -26,7 +27,9 @@ RUN adduser --disabled-password --gecos 'unprivileged user' psr && \
     chown -R psr:psr /home/psr/.ssh
 
 # Create space for ssh deamozshn and update the system
-RUN echo 'deb http://us.archive.ubuntu.com/ubuntu focal main multiverse' >> /etc/apt/sources.list && \
+RUN echo 'deb http://us.archive.ubuntu.com/ubuntu bionic main multiverse' >> /etc/apt/sources.list && \
+echo 'deb http://mirrors.kernel.org/ubuntu/ bionic main multiverse' >> /etc/apt/sources.list && \
+echo 'deb http://us.archive.ubuntu.com/ubuntu focal main multiverse' >> /etc/apt/sources.list && \
 echo 'deb http://mirrors.kernel.org/ubuntu/ focal main multiverse' >> /etc/apt/sources.list && \
     mkdir /var/run/sshd && \
     apt-get -y check && \
@@ -272,9 +275,11 @@ RUN mkdir -p /home/psr/software
 WORKDIR $PSRHOME
 RUN wget --no-check-certificate https://www.imcce.fr/content/medias/recherche/equipes/asd/calceph/calceph-2.3.2.tar.gz && \
     tar -xvvf calceph-2.3.2.tar.gz -C $PSRHOME && \
-    wget http://ds9.si.edu/download/ubuntu20/ds9.ubuntu20.8.2.1.tar.gz && \
+    #wget http://ds9.si.edu/download/ubuntu20/ds9.ubuntu20.8.2.1.tar.gz && \
+    wget http://ds9.si.edu/download/ubuntu18/ds9.ubuntu18.8.0.1.tar.gz && \
     mkdir $PSRHOME/ds9-7.5 && \
-    tar -xvvf ds9.ubuntu20.8.2.1.tar.gz -C $PSRHOME/ds9-7.5 && \
+    #tar -xvvf ds9.ubuntu20.8.2.1.tar.gz -C $PSRHOME/ds9-7.5 && \
+    tar -xvvf ds9.ubuntu18.8.0.1.tar.gz -C $PSRHOME/ds9-7.5 && \
     wget http://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/fv/fv5.4_pc_linux64.tar.gz && \
     tar -xvvf fv5.4_pc_linux64.tar.gz -C $PSRHOME && \
     wget http://www.atnf.csiro.au/people/pulsar/psrcat/downloads/psrcat_pkg.tar.gz && \
