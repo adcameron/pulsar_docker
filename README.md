@@ -1,5 +1,5 @@
 # pulsar_docker
-Builds a docker image for a pulsar analysis packages and few extras on Ubuntu 21.04 LTS. Forked from https://github.com/vivekvenkris/pulsar_docker, which was in turn forked from https://github.com/mserylak/pulsar_docker
+Builds a docker image for a pulsar analysis packages and few extras on Ubuntu XX.XX LTS. Forked from https://github.com/vivekvenkris/pulsar_docker, which was in turn forked from https://github.com/mserylak/pulsar_docker
 
 You'll find all pulsar software in /home/psr/software, environment variables are set according to ~/.mysetenv.bash file.
 
